@@ -82,13 +82,21 @@ export const type4 = async (state: typeof AgentState.State) => {
 
 export const router = (state: typeof AgentState.State): string => {
     try {
-        const hour = new Date().getHours();
+        // Force the hour extraction to match India Standard Time (IST)
+        const formatter = new Intl.DateTimeFormat("en-US", {
+            timeZone: "Asia/Kolkata",
+            hour: "numeric",
+            hour12: false
+        });
+        
+        const hour = parseInt(formatter.format(new Date()), 10);
+        console.log(`[Router] Current local hour in target timezone: ${hour}`);
 
         if (hour >= 5 && hour < 8) return "genrateQuote";
         if (hour >= 8 && hour < 12) return "type2";
         if (hour >= 12 && hour < 16) return "type1";
         if (hour >= 16 && hour < 20) return "type3";
-        if (hour >= 20) return "type4";
+        if (hour >= 20 || hour < 5) return "type4"; // Handles late night/early morning wrap-around
 
         return "type4";
     } catch (error) {
