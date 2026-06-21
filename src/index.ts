@@ -20,7 +20,7 @@ if (typeof globalThis.process?.getBuiltinModule !== 'function') {
 }
 
 // 2. NOW safely import your LangGraph app
-import app from "./src/agent/graph";
+import app from "./agent/graph.js";
 import mongoose from "mongoose"; // Ensure clean exits
 
 async function main() {

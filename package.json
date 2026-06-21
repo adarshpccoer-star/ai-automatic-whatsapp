@@ -1,15 +1,28 @@
 {
-  "name": "ai-auto-whatsappchannel",
-  "module": "index.ts",
+  "name": "ai-automatic-whatsapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "type": "module",
-  "private": true,
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adarshpccoer-star/ai-automatic-whatsapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adarshpccoer-star/ai-automatic-whatsapp/issues"
+  },
+  "homepage": "https://github.com/adarshpccoer-star/ai-automatic-whatsapp#readme",
   "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "dependencies": {
+    "typescript": "^6.0.3",
+    "@types/node": "^20.11.0",
+    "tsx": "^4.7.1",
     "@ai-sdk/groq": "^3.0.42",
     "@langchain/langgraph": "^1.4.4",
     "ai": "^6.0.208",
