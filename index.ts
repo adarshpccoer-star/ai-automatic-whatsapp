@@ -1,3 +1,13 @@
+// 1. Apply the V8 Node.js polyfill for Bun environment compatibility
+import v8 from 'node:v8';
+
+if (v8 && typeof v8.startupSnapshot === 'object') {
+  // @ts-ignore - overriding read-only/missing types in Bun environment safely
+  v8.startupSnapshot.isBuildingSnapshot = () => false;
+} else if (v8 && !v8.startupSnapshot) {
+  // @ts-ignore
+  v8.startupSnapshot = { isBuildingSnapshot: () => false };
+}
 import app from "./src/agent/graph";
 
 async function main() {
